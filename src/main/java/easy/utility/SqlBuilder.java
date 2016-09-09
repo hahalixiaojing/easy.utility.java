@@ -14,6 +14,10 @@ public class SqlBuilder {
 			sqlSegments.add(WHERESQL);
 		}
 	}
+	
+	public void append(java.util.function.Supplier<Boolean> condition,String prepend,String sql){
+		this.append(condition.get(), prepend,sql);
+	}
 
 	public void append(boolean condition, String prepend, String sql) {
 		if (condition) {

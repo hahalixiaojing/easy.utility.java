@@ -12,10 +12,15 @@ public class SqlBuilderTest {
 		builder.append(true, "and", "a=@id");
 		builder.append(false, "and", "b=@b");
 		builder.append(true, "and", "c=@c");
+		int i = 1;
+		builder.append(() -> {
 
+			return i == 1;
+
+		}, "and", "d=@d");
 		String sql = builder.toSqlString();
 
-		Assert.assertEquals("WHERE a=@id and c=@c", sql);
+		Assert.assertEquals("WHERE a=@id and c=@c and d=@d", sql);
 	}
 
 	@Test
@@ -30,8 +35,9 @@ public class SqlBuilderTest {
 
 		Assert.assertEquals("", sql);
 	}
+
 	@Test
-	public void noFirstConditionTest(){
+	public void noFirstConditionTest() {
 		SqlBuilder builder = new SqlBuilder(true);
 
 		builder.append(false, "and", "a=@id");
