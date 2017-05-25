@@ -17,7 +17,6 @@ public class IPHelperTest {
 
 		String[] iplist = IPHelper.getIp4List();
 
-		Arrays.stream(iplist).forEach(s -> System.out.println(s));
 
 		String ip = IPHelper.getIntranetIp4();
 
